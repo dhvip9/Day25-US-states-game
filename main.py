@@ -18,10 +18,7 @@ while len(wright_answer) < 50:
     user_Answer = screen.textinput(title=f"{len(wright_answer)} / 50 State Correct",
                                    prompt="Enter State Name").title()
     if user_Answer == "Exit":
-        remaining_state = []
-        for state in ans_list:
-            if state not in wright_answer:
-                remaining_state.append(state)
+        remaining_state = [state for state in ans_list if state not in wright_answer]
         df = pandas.DataFrame(remaining_state)
         df.to_csv("state_to_learn.csv")
         break
